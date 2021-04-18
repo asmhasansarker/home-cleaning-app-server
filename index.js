@@ -126,6 +126,38 @@ client.connect((err) => {
       res.send(documents);
     });
   });
+
+
+  app.get('/checkAdmin',(req, res) =>{
+    const email = req.query.email;
+    // console.log(email);
+    adminCollection.find({adminEmail: email}).toArray((err, documents) => {
+      res.send(documents);
+    });
+  })
+
+
+  // app.patch('/updateStatus/:id', (req, res) =>{
+  //   console.log(req.body)
+
+  //   ordersCollection.updateOne({_id: ObjectID(req.params.id)},
+  //   {
+  //     $set : { status: req.body.newStatus}
+  //   })
+  //   .then(result =>{
+  //     console.log(result);
+  //   })
+  // })
+
+
+
+
+
+
+
+
 });
+
+
 
 app.listen(port);
